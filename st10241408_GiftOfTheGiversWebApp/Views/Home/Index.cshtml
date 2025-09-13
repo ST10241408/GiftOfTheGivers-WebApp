@@ -8,121 +8,102 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div class="container-fluid" style="margin: 10rem auto 5rem auto">
-        <h1 class="text-black text-center" style="font-size: 70px; font-weight:bold">LATEST STATISTICS</h1>
+    <div class="container my-5 text-center">
+        <h1 class="display-1 fw-bold text-dark">LATEST STATISTICS</h1>
+        <hr class="border-3 border-dark w-25 mx-auto mb-5" />
     </div>
 
-    <div class="container mt-5">
+    <div class="container">
+
         <!-- GOODS DONATIONS -->
-        <h2 class="mb-3">Incoming Goods Donations</h2>
-        <table class="table table-striped table-bordered shadow-sm">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Donation Date</th>
-                    <th>Number of Items</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Donor</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var goodsDonation in Model.GoodsDonations)
-                {
-                    <tr>
-                        <td>@goodsDonation.GOODS_DONATION_ID</td>
-                        <td>@(goodsDonation.DATE?.ToShortDateString() ?? "-")</td>
-                        <td>@goodsDonation.ITEM_COUNT</td>
-                        <td>@goodsDonation.CATEGORY</td>
-                        <td>@goodsDonation.DESCRIPTION</td>
-                        <td>@goodsDonation.DONOR</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <h2 class="mb-4 text-primary">Incoming Goods Donations</h2>
+        <div class="row g-4">
+            @foreach (var goods in Model.GoodsDonations)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="icon ion-ios-gift"></i> @goods.CATEGORY</h5>
+                            <p class="card-text"><strong>ID:</strong> @goods.GOODS_DONATION_ID</p>
+                            <p class="card-text"><strong>Items:</strong> @goods.ITEM_COUNT</p>
+                            <p class="card-text"><strong>Date:</strong> @(goods.DATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>Donor:</strong> @goods.DONOR</p>
+                            <p class="card-text text-truncate"><strong>Description:</strong> @goods.DESCRIPTION</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
 
         <!-- MONEY DONATIONS -->
-        <h2 class="mt-5 mb-3">Incoming Money Donations</h2>
-        <table class="table table-striped table-bordered shadow-sm">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Donor</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var moneyDonation in Model.MoneyDonations)
-                {
-                    <tr>
-                        <td>@moneyDonation.MONEY_DONATION_ID</td>
-                        <td>@(moneyDonation.DATE?.ToShortDateString() ?? "-")</td>
-                        <td>R @moneyDonation.AMOUNT</td>
-                        <td>@moneyDonation.DONOR</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <h2 class="mt-5 mb-4 text-success">Incoming Money Donations</h2>
+        <div class="row g-4">
+            @foreach (var money in Model.MoneyDonations)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-success">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="icon ion-logo-bitcoin"></i> Money Donation</h5>
+                            <p class="card-text"><strong>ID:</strong> @money.MONEY_DONATION_ID</p>
+                            <p class="card-text"><strong>Amount:</strong> R @money.AMOUNT</p>
+                            <p class="card-text"><strong>Date:</strong> @(money.DATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>Donor:</strong> @money.DONOR</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
 
         <!-- DISASTERS -->
-        <h2 class="mt-5 mb-3">Incoming Disasters</h2>
-        <table class="table table-striped table-bordered shadow-sm">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Location</th>
-                    <th>Aid Type</th>
-                    <th>Is Active</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var disaster in Model.Disasters)
-                {
-                    <tr>
-                        <td>@disaster.DISTATER_ID</td>
-                        <td>@disaster.USERNAME</td>
-                        <td>@(disaster.STARTDATE?.ToShortDateString() ?? "-")</td>
-                        <td>@(disaster.ENDDATE?.ToShortDateString() ?? "-")</td>
-                        <td>@disaster.LOCATION</td>
-                        <td>@disaster.AID_TYPE</td>
-                        <td>
-                            @(disaster.IsActive == 1 ? "Yes" : "No")
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <h2 class="mt-5 mb-4 text-danger">Incoming Disasters</h2>
+        <div class="row g-4">
+            @foreach (var disaster in Model.Disasters)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-danger">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="icon ion-ios-warning"></i> @disaster.AID_TYPE</h5>
+                            <p class="card-text"><strong>ID:</strong> @disaster.DISTATER_ID</p>
+                            <p class="card-text"><strong>User:</strong> @disaster.USERNAME</p>
+                            <p class="card-text"><strong>Start:</strong> @(disaster.STARTDATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>End:</strong> @(disaster.ENDDATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>Location:</strong> @disaster.LOCATION</p>
+                            <p class="card-text"><strong>Active:</strong> @(disaster.IsActive == 1 ? "Yes" : "No")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
     </div>
 }
 else
 {
-    <!-- Public view for users not logged in -->
-    <img class="w-100 h-100" src="~/images/Philosophy.png" alt="Philosophy" style="background-size: cover; background-repeat: no-repeat" />
-    <img class="w-100 h-100" src="~/images/AboutUs.png" alt="About Us" style="background-size: cover; background-repeat: no-repeat" />
+    <!-- Public view -->
+    <div class="position-relative">
+        <img src="~/images/Philosophy.png" class="w-100" style="object-fit: cover; max-height: 500px;" alt="Philosophy" />
+        <img src="~/images/AboutUs.png" class="w-100 mt-3" style="object-fit: cover; max-height: 500px;" alt="About Us" />
+    </div>
 
-    <div class="container bg-black text-center text-white" style="padding:70px 0; margin-top:-10rem; border-radius:70px">
-        <div class="row">
+    <div class="container text-center my-5">
+        <div class="row g-4">
             <div class="col-12 col-md-4">
-                <div class="p-4">
-                    <a class="btn btn-outline-light bg-orange w-100" style="font-size:2rem; border-radius:12px"
-                       asp-controller="UserDisasters" asp-action="Create">Log a Disaster</a>
-                </div>
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                   asp-controller="UserDisasters" asp-action="Create">
+                    Log a Disaster
+                </a>
             </div>
             <div class="col-12 col-md-4">
-                <div class="p-4">
-                    <a class="btn btn-outline-light bg-orange w-100" style="font-size:2rem; border-radius:12px"
-                       asp-controller="UserGoodsDonations" asp-action="Create">Donate Goods</a>
-                </div>
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                   asp-controller="UserGoodsDonations" asp-action="Create">
+                    Donate Goods
+                </a>
             </div>
             <div class="col-12 col-md-4">
-                <div class="p-4">
-                    <a class="btn btn-outline-light bg-orange w-100" style="font-size:2rem; border-radius:12px"
-                       asp-controller="UserMoneyDonations" asp-action="Create">Donate Money</a>
-                </div>
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                   asp-controller="UserMoneyDonations" asp-action="Create">
+                    Donate Money
+                </a>
             </div>
         </div>
     </div>

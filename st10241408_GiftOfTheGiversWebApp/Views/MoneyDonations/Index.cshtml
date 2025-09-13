@@ -1,48 +1,38 @@
 ﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.MoneyDonation>
-<div class="container">
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.USERNAME)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DATE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AMOUNT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DONOR)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.USERNAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DATE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AMOUNT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DONOR)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MONEY_DONATION_ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MONEY_DONATION_ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MONEY_DONATION_ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Money Donations</h1>
+        <a asp-action="Create" class="btn btn-success btn-lg">Create New</a>
+    </div>
+
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Username</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Donor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.USERNAME</td>
+                    <td>
+                        @(item.DATE.HasValue ? item.DATE.Value.ToShortDateString() : "")
+                    </td>
+                    <td>@item.AMOUNT.ToString("C")</td>
+                    <td>@item.DONOR</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MONEY_DONATION_ID" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.MONEY_DONATION_ID" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.MONEY_DONATION_ID" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

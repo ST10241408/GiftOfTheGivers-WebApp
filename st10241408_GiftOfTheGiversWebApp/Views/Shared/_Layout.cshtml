@@ -229,16 +229,24 @@
         </ul>
       </div>
 
-      <!-- Useful Links Section -->
-      <div class="col-md-3 mb-3">
-        <h5>Useful Links</h5>
-        <ul class="list-unstyled">
-          <li><a href="/about" class="text-light">About Us</a></li>
-          <li><a href="/contact" class="text-light">Contact Us</a></li>
-          <li><a href="/volunteer" class="text-light">Volunteer</a></li>
-          <li><a href="/news" class="text-light">Latest News</a></li>
-        </ul>
-      </div>
+                    <!-- Useful Links Section -->
+                    <div class="col-md-3 mb-3">
+                        <h5>Useful Links</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="About" class="text-light">About Us</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Contact" class="text-light">Contact Us</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="VolunteerManagement" asp-action="Index" class="text-light">Volunteer</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="News" asp-action="Index" class="text-light">Latest News</a>
+                            </li>
+                        </ul>
+                    </div>
 
       <!-- Social Media Icons -->
       <div class="col-md-3 mb-3">

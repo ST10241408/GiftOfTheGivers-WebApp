@@ -1,53 +1,41 @@
 ﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.Disaster>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Disasters";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container">
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.STARTDATE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ENDDATE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LOCATION)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AID_TYPE)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.STARTDATE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ENDDATE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LOCATION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AID_TYPE)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DISTATER_ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DISTATER_ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DISTATER_ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container mt-4">
+    <h2>Disaster Reports</h2>
+    <hr />
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Report New Disaster</a>
+    </p>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Location</th>
+                <th>Aid Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.STARTDATE?.ToShortDateString()</td>
+                    <td>@item.ENDDATE?.ToShortDateString()</td>
+                    <td>@item.LOCATION</td>
+                    <td>@item.AID_TYPE</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.DISTATER_ID" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.DISTATER_ID" class="btn btn-sm btn-info ms-1">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.DISTATER_ID" class="btn btn-sm btn-danger ms-1">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

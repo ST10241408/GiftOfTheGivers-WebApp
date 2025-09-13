@@ -2,5 +2,73 @@
     ViewData["Title"] = "About Us";
 }
 
-<h2>About Us</h2>
-<p>Welcome to Gift of the Givers! This page will contain information about our organization.</p>
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-3 fw-bold text-primary">About Gift of the Givers</h1>
+        <p class="lead text-muted">Making a difference, one donation at a time.</p>
+    </div>
+
+    <!-- Mission / Vision Section -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100 border-primary">
+                <div class="card-body text-center">
+                    <i class="icon ion-ios-heart text-danger" style="font-size:3rem;"></i>
+                    <h4 class="mt-3">Our Mission</h4>
+                    <p class="text-muted">To provide sustainable aid to communities in need and empower individuals to make a positive impact through donations.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100 border-success">
+                <div class="card-body text-center">
+                    <i class="icon ion-ios-eye text-success" style="font-size:3rem;"></i>
+                    <h4 class="mt-3">Our Vision</h4>
+                    <p class="text-muted">A world where every disaster-affected community receives timely support, and generosity drives change for those in need.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Values Section -->
+    <div class="mb-5">
+        <h2 class="text-center mb-4 text-primary">Our Core Values</h2>
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 border-info">
+                    <div class="card-body">
+                        <i class="icon ion-ios-people text-info" style="font-size:2.5rem;"></i>
+                        <h5 class="mt-3">Integrity</h5>
+                        <p class="text-muted">We operate transparently, ensuring every donation reaches those in need.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 border-warning">
+                    <div class="card-body">
+                        <i class="icon ion-ios-flame text-warning" style="font-size:2.5rem;"></i>
+                        <h5 class="mt-3">Compassion</h5>
+                        <p class="text-muted">We care deeply about every individual affected by disasters.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 border-danger">
+                    <div class="card-body">
+                        <i class="icon ion-ios-globe text-danger" style="font-size:2.5rem;"></i>
+                        <h5 class="mt-3">Impact</h5>
+                        <p class="text-muted">Our efforts focus on meaningful change that transforms communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional CTA Section -->
+    <div class="text-center my-5">
+        <a class="btn btn-lg btn-warning shadow-sm" asp-controller="UserMoneyDonations" asp-action="Create">
+            Make a Difference – Donate Now
+        </a>
+    </div>
+</div>

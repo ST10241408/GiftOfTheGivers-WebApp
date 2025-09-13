@@ -1,43 +1,25 @@
 ﻿@model ST10241408_GiftOfTheGiversWebApp.Models.GoodsDonation
-<div class="container">
-<div>
-    <h4>GoodsDonation</h4>
+
+<div class="container mt-4">
+    <h3>Donation Details</h3>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DATE)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DATE)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ITEM_COUNT)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ITEM_COUNT)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CATEGORY)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CATEGORY)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DESCRIPTION)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DESCRIPTION)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DONOR)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DONOR)
-        </dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.DATE)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.DATE)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.ITEM_COUNT)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.ITEM_COUNT)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.CATEGORY)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.CATEGORY)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.DESCRIPTION)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.DESCRIPTION)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.DONOR)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.DONOR)</dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.GOODS_DONATION_ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+    <a asp-action="Edit" asp-route-id="@Model.GOODS_DONATION_ID" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
 </div>

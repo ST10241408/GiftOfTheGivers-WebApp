@@ -1,59 +1,42 @@
 ﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.GoodsDonation>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Goods Donations";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container">
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DATE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ITEM_COUNT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CATEGORY)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DESCRIPTION)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DONOR)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DATE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ITEM_COUNT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CATEGORY)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DESCRIPTION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DONOR)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.GOODS_DONATION_ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GOODS_DONATION_ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GOODS_DONATION_ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container mt-4">
+    <h2>Goods Donations</h2>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create New Donation</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.DATE)</th>
+                <th>@Html.DisplayNameFor(m => m.ITEM_COUNT)</th>
+                <th>@Html.DisplayNameFor(m => m.CATEGORY)</th>
+                <th>@Html.DisplayNameFor(m => m.DESCRIPTION)</th>
+                <th>@Html.DisplayNameFor(m => m.DONOR)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.DATE)</td>
+                    <td>@Html.DisplayFor(m => item.ITEM_COUNT)</td>
+                    <td>@Html.DisplayFor(m => item.CATEGORY)</td>
+                    <td>@Html.DisplayFor(m => item.DESCRIPTION)</td>
+                    <td>@Html.DisplayFor(m => item.DONOR)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.GOODS_DONATION_ID" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.GOODS_DONATION_ID" class="btn btn-sm btn-info ms-1">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.GOODS_DONATION_ID" class="btn btn-sm btn-danger ms-1">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

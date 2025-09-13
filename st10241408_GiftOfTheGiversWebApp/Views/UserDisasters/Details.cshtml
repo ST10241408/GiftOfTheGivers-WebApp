@@ -1,55 +1,31 @@
 ﻿@model ST10241408_GiftOfTheGiversWebApp.Models.Disaster
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Disaster Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container">
-<h1>Details</h1>
 
-<div>
-    <h4>Disaster</h4>
+<div class="container mt-4">
+    <h2>Disaster Details</h2>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.USERNAME)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.USERNAME)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.STARTDATE)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.STARTDATE)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ENDDATE)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ENDDATE)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LOCATION)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LOCATION)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AID_TYPE)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AID_TYPE)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
+        <dt class="col-sm-3">Reported By</dt>
+        <dd class="col-sm-9">@Model.USERNAME</dd>
+
+        <dt class="col-sm-3">Start Date</dt>
+        dd class="col-sm-9">@Model.STARTDATE?.ToShortDateString()</dd>
+        <dt class="col-sm-3">End Date</dt>
+        <dd class="col-sm-9">@Model.ENDDATE?.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9">@Model.LOCATION</dd>
+
+        <dt class="col-sm-3">Aid Type</dt>
+        <dd class="col-sm-9">@Model.AID_TYPE</dd>
+
+        <dt class="col-sm-3">Active Status</dt>
+        <dd class="col-sm-9">@Model.IsActive ? "Active" : "Inactive"</dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.DISTATER_ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+    <a asp-action="Edit" asp-route-id="@Model.DISTATER_ID" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
 </div>
