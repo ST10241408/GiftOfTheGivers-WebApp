@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Volunteer List";
+}
+
+<h2>Volunteer List</h2>
+<a asp-action="Create" class="btn btn-primary">Register New Volunteer</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Registration Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.RegistrationDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VolunteerID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VolunteerID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

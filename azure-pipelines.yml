@@ -1,0 +1,44 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+  branches:
+    include:
+      - master  # Trigger builds from the master branch
+
+pool:
+  name: 'Default'  
+  demands:
+    - Agent.Name -equals LENOVO  
+
+steps:
+- task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 5.x'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+
+- task: VSBuild@1
+  displayName: 'Build Solution'
+  inputs:
+    solution: '**/*.sln'
+    msbuildArchitecture: 'x64'
+    configuration: 'Release'
+
+- task: VSTest@2
+  displayName: 'Run Tests'
+  inputs:
+    platform: 'x64'
+    configuration: 'Release'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Build Artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

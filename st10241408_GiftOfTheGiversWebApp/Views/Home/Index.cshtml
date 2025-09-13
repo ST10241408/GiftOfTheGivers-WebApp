@@ -1,0 +1,129 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model ST10241408_GiftOfTheGiversWebApp.Models.IncomingDataModel;
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container-fluid" style="margin: 10rem auto 5rem auto">
+        <h1 class="text-black text-center" style="font-size: 70px; font-weight:bold">LATEST STATISTICS</h1>
+    </div>
+
+    <div class="container mt-5">
+        <!-- GOODS DONATIONS -->
+        <h2 class="mb-3">Incoming Goods Donations</h2>
+        <table class="table table-striped table-bordered shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Donation Date</th>
+                    <th>Number of Items</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Donor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var goodsDonation in Model.GoodsDonations)
+                {
+                    <tr>
+                        <td>@goodsDonation.GOODS_DONATION_ID</td>
+                        <td>@(goodsDonation.DATE?.ToShortDateString() ?? "-")</td>
+                        <td>@goodsDonation.ITEM_COUNT</td>
+                        <td>@goodsDonation.CATEGORY</td>
+                        <td>@goodsDonation.DESCRIPTION</td>
+                        <td>@goodsDonation.DONOR</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- MONEY DONATIONS -->
+        <h2 class="mt-5 mb-3">Incoming Money Donations</h2>
+        <table class="table table-striped table-bordered shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Donor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var moneyDonation in Model.MoneyDonations)
+                {
+                    <tr>
+                        <td>@moneyDonation.MONEY_DONATION_ID</td>
+                        <td>@(moneyDonation.DATE?.ToShortDateString() ?? "-")</td>
+                        <td>R @moneyDonation.AMOUNT</td>
+                        <td>@moneyDonation.DONOR</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- DISASTERS -->
+        <h2 class="mt-5 mb-3">Incoming Disasters</h2>
+        <table class="table table-striped table-bordered shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Location</th>
+                    <th>Aid Type</th>
+                    <th>Is Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var disaster in Model.Disasters)
+                {
+                    <tr>
+                        <td>@disaster.DISTATER_ID</td>
+                        <td>@disaster.USERNAME</td>
+                        <td>@(disaster.STARTDATE?.ToShortDateString() ?? "-")</td>
+                        <td>@(disaster.ENDDATE?.ToShortDateString() ?? "-")</td>
+                        <td>@disaster.LOCATION</td>
+                        <td>@disaster.AID_TYPE</td>
+                        <td>
+                            @(disaster.IsActive == 1 ? "Yes" : "No")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <!-- Public view for users not logged in -->
+    <img class="w-100 h-100" src="~/images/Philosophy.png" alt="Philosophy" style="background-size: cover; background-repeat: no-repeat" />
+    <img class="w-100 h-100" src="~/images/AboutUs.png" alt="About Us" style="background-size: cover; background-repeat: no-repeat" />
+
+    <div class="container bg-black text-center text-white" style="padding:70px 0; margin-top:-10rem; border-radius:70px">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="p-4">
+                    <a class="btn btn-outline-light bg-orange w-100" style="font-size:2rem; border-radius:12px"
+                       asp-controller="UserDisasters" asp-action="Create">Log a Disaster</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="p-4">
+                    <a class="btn btn-outline-light bg-orange w-100" style="font-size:2rem; border-radius:12px"
+                       asp-controller="UserGoodsDonations" asp-action="Create">Donate Goods</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="p-4">
+                    <a class="btn btn-outline-light bg-orange w-100" style="font-size:2rem; border-radius:12px"
+                       asp-controller="UserMoneyDonations" asp-action="Create">Donate Money</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
