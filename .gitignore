@@ -1,0 +1,29 @@
+# Visual Studio cache / settings
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+
+# IIS Express
+IISExpress/
+
+# Rider IDE
+.idea/
+
+# NPM / Node
+node_modules/
+
+# Logs
+*.log
+
+# Publish / deployment folders
+wwwroot/
+
+# Others
+*.pdb
+*.dbmdl

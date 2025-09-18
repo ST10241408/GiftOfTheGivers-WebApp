@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.GoodsPurchase>
+
+@{
+    ViewData["Title"] = "Goods Purchases";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5">Goods Purchases</h1>
+        <a asp-action="Create" class="btn btn-success btn-lg">Create New Purchase</a>
+    </div>
+
+    <p>Available Money: <strong>@ViewBag.AvailableMoney</strong></p>
+
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Category</th>
+                <th>Item Count</th>
+                <th>Item Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CATEGORY</td>
+                    <td>@item.ITEM_COUNT</td>
+                    <td>@item.GoodsPurchasePrice.ToString("C")</td>
+                    <td>@item.GoodsTotalPrice.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

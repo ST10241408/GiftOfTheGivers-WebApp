@@ -1,0 +1,70 @@
+﻿@model ST10241408_GiftOfTheGiversWebApp.Models.GoodsAllocation
+
+@{
+    ViewData["Title"] = "Create Goods Allocation";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Create Goods Allocation</h1>
+        <p class="text-muted">Fill out the details to allocate goods for disasters.</p>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="CATEGORY" class="form-label">Select Category</label>
+                    <select asp-for="CATEGORY" asp-items="new SelectList(ViewBag.Categories)" class="form-select" id="CATEGORY">
+                        <option value="">-- Select Category --</option>
+                    </select>
+                    <span asp-validation-for="CATEGORY" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ITEM_COUNT" class="form-label">Select Item Count</label>
+                    <select asp-for="ITEM_COUNT" class="form-select" id="itemCountSelect">
+                        <option value="">-- Select Item Count --</option>
+                    </select>
+                    <span asp-validation-for="ITEM_COUNT" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="AidType" class="form-label">Aid Type</label>
+                    <select asp-for="AidType" asp-items="ViewBag.DisasterTypes" class="form-select">
+                        <option value="">-- Select Aid Type --</option>
+                    </select>
+                    <span asp-validation-for="AidType" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100">Create Allocation</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#CATEGORY").on("change", function () {
+                var category = $(this).val();
+                var itemCountSelect = $("#itemCountSelect");
+                itemCountSelect.empty();
+                itemCountSelect.append('<option value="">-- Select Item Count --</option>');
+
+                if (category) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/GoodsAllocations/GetSumOfItemCount",
+                        data: { category: category },
+                        success: function (sumOfItemCount) {
+                            for (var i = 1; i <= sumOfItemCount; i++) {
+                                itemCountSelect.append('<option value="' + i + '">' + i + '</option>');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,34 @@
+﻿<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4 text-primary">Disaster Details</h1>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Username</dt>
+                <dd class="col-sm-9">@Model.USERNAME</dd>
+
+                <dt class="col-sm-3">Start Date</dt>
+                <dd class="col-sm-9">@Model.STARTDATE?.ToShortDateString()</dd>
+
+                <dt class="col-sm-3">End Date</dt>
+                <dd class="col-sm-9">@Model.ENDDATE?.ToShortDateString()</dd>
+
+                <dt class="col-sm-3">Location</dt>
+                <dd class="col-sm-9">@Model.LOCATION</dd>
+
+                <dt class="col-sm-3">Aid Type</dt>
+                <dd class="col-sm-9">@Model.AID_TYPE</dd>
+
+                <dt class="col-sm-3">Active</dt>
+                <dd class="col-sm-9">@(Model.IsActive ? "Yes" : "No")</dd>
+            </dl>
+
+            <div class="mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.DISTATER_ID" class="btn btn-success">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

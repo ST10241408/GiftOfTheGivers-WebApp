@@ -1,0 +1,42 @@
+﻿@model ST10241408_GiftOfTheGiversWebApp.Models.MoneyAllocation
+
+@{
+    ViewData["Title"] = "Create Money Allocation";
+}
+
+<div class="container my-5">
+    <h1 class="display-5 mb-3">Create Money Allocation</h1>
+
+    <p>Remaining Money: <strong>@ViewBag.RemainingMoney.ToString("C")</strong></p>
+    <p>Total Allocated: <strong>@ViewBag.Total.ToString("C")</strong></p>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="DisasterId" class="form-label">Select Disaster Aid</label>
+                    <select asp-for="DisasterId" asp-items="@ViewBag.DisasterTypes" class="form-select">
+                        <option value="">-- Select Disaster --</option>
+                    </select>
+                    <span asp-validation-for="DisasterId" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="AidType" />
+
+                <div class="mb-3">
+                    <label asp-for="AllocationAmount" class="form-label">Allocation Amount</label>
+                    <input asp-for="AllocationAmount" class="form-control" type="number" min="0" step="0.01" />
+                    <span asp-validation-for="AllocationAmount" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Create Allocation</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model ST10241408_GiftOfTheGiversWebApp.Models.MoneyDonation
+
+<div class="container mt-4">
+    <h3>Edit Donation</h3>
+    <hr />
+
+    <form asp-action="Edit" class="needs-validation" novalidate>
+        <input type="hidden" asp-for="MONEY_DONATION_ID" />
+
+        <div class="mb-3">
+            <label asp-for="DATE" class="form-label"></label>
+            <input asp-for="DATE" class="form-control" type="date" />
+            <span asp-validation-for="DATE" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AMOUNT" class="form-label"></label>
+            <input asp-for="AMOUNT" class="form-control" type="number" step="0.01" min="1" />
+            <span asp-validation-for="AMOUNT" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DONOR" class="form-label"></label>
+            <input asp-for="DONOR" class="form-control" />
+            <span asp-validation-for="DONOR" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
