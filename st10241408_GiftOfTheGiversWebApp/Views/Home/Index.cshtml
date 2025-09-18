@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model ST10241408_GiftOfTheGiversWebApp.Models.IncomingDataModel;
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container my-5 text-center">
+        <h1 class="display-1 fw-bold text-dark">LATEST STATISTICS</h1>
+        <hr class="border-3 border-dark w-25 mx-auto mb-5" />
+    </div>
+
+    <div class="container">
+
+        <!-- GOODS DONATIONS -->
+        <h2 class="mb-4 text-primary">Incoming Goods Donations</h2>
+        <div class="row g-4">
+            @foreach (var goods in Model.GoodsDonations)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="icon ion-ios-gift"></i> @goods.CATEGORY</h5>
+                            <p class="card-text"><strong>ID:</strong> @goods.GOODS_DONATION_ID</p>
+                            <p class="card-text"><strong>Items:</strong> @goods.ITEM_COUNT</p>
+                            <p class="card-text"><strong>Date:</strong> @(goods.DATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>Donor:</strong> @goods.DONOR</p>
+                            <p class="card-text text-truncate"><strong>Description:</strong> @goods.DESCRIPTION</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- MONEY DONATIONS -->
+        <h2 class="mt-5 mb-4 text-success">Incoming Money Donations</h2>
+        <div class="row g-4">
+            @foreach (var money in Model.MoneyDonations)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-success">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="icon ion-logo-bitcoin"></i> Money Donation</h5>
+                            <p class="card-text"><strong>ID:</strong> @money.MONEY_DONATION_ID</p>
+                            <p class="card-text"><strong>Amount:</strong> R @money.AMOUNT</p>
+                            <p class="card-text"><strong>Date:</strong> @(money.DATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>Donor:</strong> @money.DONOR</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- DISASTERS -->
+        <h2 class="mt-5 mb-4 text-danger">Incoming Disasters</h2>
+        <div class="row g-4">
+            @foreach (var disaster in Model.Disasters)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-danger">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="icon ion-ios-warning"></i> @disaster.AID_TYPE</h5>
+                            <p class="card-text"><strong>ID:</strong> @disaster.DISTATER_ID</p>
+                            <p class="card-text"><strong>User:</strong> @disaster.USERNAME</p>
+                            <p class="card-text"><strong>Start:</strong> @(disaster.STARTDATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>End:</strong> @(disaster.ENDDATE?.ToShortDateString() ?? "-")</p>
+                            <p class="card-text"><strong>Location:</strong> @disaster.LOCATION</p>
+                            <p class="card-text"><strong>Active:</strong> @(disaster.IsActive == 1 ? "Yes" : "No")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+}
+else
+{
+    <!-- Public view -->
+    <div class="position-relative">
+        <img src="~/images/Philosophy.png" class="w-100" style="object-fit: cover; max-height: 500px;" alt="Philosophy" />
+        <img src="~/images/AboutUs.png" class="w-100 mt-3" style="object-fit: cover; max-height: 500px;" alt="About Us" />
+    </div>
+
+    <div class="container text-center my-5">
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                   asp-controller="UserDisasters" asp-action="Create">
+                    Log a Disaster
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                   asp-controller="UserGoodsDonations" asp-action="Create">
+                    Donate Goods
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                   asp-controller="UserMoneyDonations" asp-action="Create">
+                    Donate Money
+                </a>
+            </div>
+        </div>
+    </div>
+}

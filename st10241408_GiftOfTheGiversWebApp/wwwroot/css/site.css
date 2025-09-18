@@ -1,0 +1,231 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #FFFFFF; /* primary readable text */
+    background-color: #F4F6F8; /* light neutral background */
+}
+
+body {
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #F4F6F8, #E8EBEF); /* subtle, professional gradient */
+}
+
+/* Media Query for larger screens */
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Focus Styles */
+:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(93, 173, 226, 0.7);
+    transition: box-shadow 0.3s;
+}
+
+/* Header */
+header {
+    background-color: #2C3E50; /* dark professional blue */
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    header a {
+        color: #FFFFFF;
+        text-decoration: none;
+        margin-left: 1rem;
+    }
+
+        header a:hover {
+            color: #5DADE2; /* accent blue hover */
+        }
+
+/* Footer */
+footer {
+    background-color: #34495E; /* slightly lighter dark blue */
+    color: #FFFFFF;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+}
+
+    footer a {
+        color: #5DADE2;
+        text-decoration: none;
+        margin: 0 0.5rem;
+    }
+
+        footer a:hover {
+            color: #3498DB;
+        }
+
+/* Buttons */
+.btn {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #5DADE2; /* professional blue */
+    color: #FFFFFF;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+    .btn:hover {
+        background-color: #3498DB;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .btn:active {
+        background-color: #2E86C1;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transform: translateY(0);
+    }
+
+/* Forms */
+.form-control {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #BDC3C7;
+    border-radius: 0.5rem;
+    background-color: #FFFFFF;
+    color: #2C3E50;
+}
+
+    .form-control::placeholder {
+        color: #95A5A6;
+    }
+
+    .form-control:focus {
+        border-color: #5DADE2;
+        box-shadow: 0 0 0 0.2rem rgba(93, 173, 226, 0.3);
+    }
+
+/* Table Styles */
+.table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    color: #2C3E50;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+    .table th {
+        background-color: #5DADE2;
+        color: #FFFFFF;
+        font-weight: 600;
+    }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ECF0F1;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #FFFFFF;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #D6EAF8;
+    color: #2C3E50;
+    transition: all 0.3s ease;
+}
+
+/* Cards */
+.card {
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    color: #2C3E50;
+    margin-bottom: 2rem;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #2C3E50;
+        text-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: #7F8C8D;
+        margin-bottom: 2rem;
+    }
+
+    .hero .btn {
+        margin: 0.5rem;
+    }
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Links */
+a {
+    color: #2C3E50;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #3498DB;
+        text-decoration: underline;
+    }
+
+/* Responsive Hero Image Placement */
+.hero img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 60%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+/* Section Headings */
+h2, h3, h4 {
+    color: #2C3E50;
+    margin-bottom: 1rem;
+}

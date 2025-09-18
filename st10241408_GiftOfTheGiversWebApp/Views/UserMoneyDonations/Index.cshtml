@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.MoneyDonation>
+
+@{
+    ViewData["Title"] = "Money Donations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Money Donations</h2>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create New Donation</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.DATE)</th>
+                <th>@Html.DisplayNameFor(m => m.AMOUNT)</th>
+                <th>@Html.DisplayNameFor(m => m.DONOR)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.DATE)</td>
+                    <td>@Html.DisplayFor(m => item.AMOUNT)</td>
+                    <td>@Html.DisplayFor(m => item.DONOR)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MONEY_DONATION_ID" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.MONEY_DONATION_ID" class="btn btn-sm btn-info ms-1">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.MONEY_DONATION_ID" class="btn btn-sm btn-danger ms-1">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

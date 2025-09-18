@@ -1,0 +1,31 @@
+﻿@model ST10241408_GiftOfTheGiversWebApp.Models.Disaster
+@{
+    ViewData["Title"] = "Disaster Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Disaster Details</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Reported By</dt>
+        <dd class="col-sm-9">@Model.USERNAME</dd>
+
+        <dt class="col-sm-3">Start Date</dt>
+        dd class="col-sm-9">@Model.STARTDATE?.ToShortDateString()</dd>
+        <dt class="col-sm-3">End Date</dt>
+        <dd class="col-sm-9">@Model.ENDDATE?.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9">@Model.LOCATION</dd>
+
+        <dt class="col-sm-3">Aid Type</dt>
+        <dd class="col-sm-9">@Model.AID_TYPE</dd>
+
+        <dt class="col-sm-3">Active Status</dt>
+        <dd class="col-sm-9">@Model.IsActive ? "Active" : "Inactive"</dd>
+    </dl>
+
+    <a asp-action="Edit" asp-route-id="@Model.DISTATER_ID" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+</div>

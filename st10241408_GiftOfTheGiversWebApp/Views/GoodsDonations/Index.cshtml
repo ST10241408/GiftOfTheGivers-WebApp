@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.GoodsDonation>
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5">Goods Donations</h1>
+        <a asp-action="Create" class="btn btn-success btn-lg">Create New Donation</a>
+    </div>
+
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Item Count</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Donor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DATE?.ToShortDateString()</td>
+                    <td>@item.ITEM_COUNT</td>
+                    <td>@item.CATEGORY</td>
+                    <td>@item.DESCRIPTION</td>
+                    <td>@item.DONOR</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.GOODS_DONATION_ID" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.GOODS_DONATION_ID" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.GOODS_DONATION_ID" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

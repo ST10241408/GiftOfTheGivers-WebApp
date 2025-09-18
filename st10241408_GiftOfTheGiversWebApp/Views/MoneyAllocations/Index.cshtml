@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ST10241408_GiftOfTheGiversWebApp.Models.MoneyAllocation>
+
+@{
+    ViewData["Title"] = "Money Allocations";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5">Money Allocations</h1>
+        <a asp-action="Create" class="btn btn-success btn-lg">Create New Allocation</a>
+    </div>
+
+    <p>Remaining Money: <strong>@ViewBag.RemainingMoney.ToString("C")</strong></p>
+    <p>Total Allocated: <strong>@ViewBag.Total.ToString("C")</strong></p>
+
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Allocation Date</th>
+                <th>Aid Type</th>
+                <th>Allocation Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AllocationDate.ToShortDateString()</td>
+                    <td>@item.AidType</td>
+                    <td>@item.AllocationAmount.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

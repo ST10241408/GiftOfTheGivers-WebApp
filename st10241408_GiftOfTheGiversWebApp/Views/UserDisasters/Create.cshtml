@@ -1,0 +1,63 @@
+﻿@model ST10241408_GiftOfTheGiversWebApp.Models.Disaster
+@{
+    ViewData["Title"] = "Report Disaster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Report a Disaster</h2>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input asp-for="USERNAME" type="hidden" value="@User.Identity.Name" />
+
+                <div class="mb-3">
+                    <label asp-for="STARTDATE" class="form-label"></label>
+                    <input asp-for="STARTDATE" class="form-control" type="date" />
+                    <span asp-validation-for="STARTDATE" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ENDDATE" class="form-label"></label>
+                    <input asp-for="ENDDATE" class="form-control" type="date" />
+                    <span asp-validation-for="ENDDATE" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="LOCATION" class="form-label"></label>
+                    <input asp-for="LOCATION" class="form-control" />
+                    <span asp-validation-for="LOCATION" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="AID_TYPE" class="form-label"></label>
+                    <select asp-for="AID_TYPE" class="form-select">
+                        <option value="">-- Select an Aid Type --</option>
+                        <option>Emergency Shelter</option>
+                        <option>Food Assistance</option>
+                        <option>Medical Aid</option>
+                        <option>Clean Water and Sanitation</option>
+                        <option>Search and Rescue</option>
+                        <option>Psychological Support</option>
+                        <option>Logistical Support</option>
+                        <option>Infrastructure Repair</option>
+                        <option>Educational Support</option>
+                        <option>Livelihood Assistance</option>
+                    </select>
+                    <span asp-validation-for="AID_TYPE" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

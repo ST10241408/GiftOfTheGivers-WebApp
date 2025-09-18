@@ -1,0 +1,31 @@
+﻿@model ST10241408_GiftOfTheGiversWebApp.Models.Disaster
+@{
+    ViewData["Title"] = "Delete Disaster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-danger">Confirm Deletion</h2>
+    <hr />
+    <p>Are you sure you want to delete this disaster report?</p>
+
+    <dl class="row">
+        <dt class="col-sm-3">Start Date</dt>
+        <dd class="col-sm-9">@Model.STARTDATE?.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">End Date</dt>
+        <dd class="col-sm-9">@Model.ENDDATE?.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9">@Model.LOCATION</dd>
+
+        <dt class="col-sm-3">Aid Type</dt>
+        <dd class="col-sm-9">@Model.AID_TYPE</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="DISTATER_ID" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>

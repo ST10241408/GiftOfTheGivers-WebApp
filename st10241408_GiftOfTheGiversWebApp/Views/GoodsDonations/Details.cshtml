@@ -1,0 +1,26 @@
+﻿@model ST10241408_GiftOfTheGiversWebApp.Models.GoodsDonation
+
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="mb-4">Donation Details</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Username</dt>
+                <dd class="col-sm-9">@Model.USERNAME</dd>
+                <dt class="col-sm-3">Date</dt>
+                <dd class="col-sm-9">@Model.DATE?.ToShortDateString()</dd>
+                <dt class="col-sm-3">Item Count</dt>
+                <dd class="col-sm-9">@Model.ITEM_COUNT</dd>
+                <dt class="col-sm-3">Category</dt>
+                <dd class="col-sm-9">@Model.CATEGORY</dd>
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Model.DESCRIPTION</dd>
+                <dt class="col-sm-3">Donor</dt>
+                <dd class="col-sm-9">@Model.DONOR</dd>
+            </dl>
+
+            <a asp-action="Edit" asp-route-id="@Model.GOODS_DONATION_ID" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

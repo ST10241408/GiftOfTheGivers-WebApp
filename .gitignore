@@ -1,29 +1,61 @@
-# Visual Studio cache / settings
-.vs/
-*.user
+# =========================
+# Visual Studio & .NET Core
+# =========================
+
+# User-specific files
+*.rsuser
 *.suo
+*.user
 *.userosscache
 *.sln.docstates
 
-# Build outputs
-bin/
-obj/
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
 
-# IIS Express
-IISExpress/
+# Visual Studio cache
+.vs/
+*.vscode/
 
-# Rider IDE
+# Rider / JetBrains
 .idea/
 
-# NPM / Node
+# =========================
+# ASP.NET / IIS
+# =========================
+IISExpress/
+
+# ASP.NET publish outputs
+wwwroot/*.publish.*
+project.lock.json
+
+# =========================
+# Packages & Dependencies
+# =========================
 node_modules/
+packages/
+*.nupkg
+*.snupkg
 
-# Logs
+# =========================
+# Logs & Databases
+# =========================
 *.log
-
-# Publish / deployment folders
-wwwroot/
-
-# Others
 *.pdb
 *.dbmdl
+*.bak
+*.cache
+*.tmp
+
+# =========================
+# Other system files
+# =========================
+*.ide
+*.DS_Store
