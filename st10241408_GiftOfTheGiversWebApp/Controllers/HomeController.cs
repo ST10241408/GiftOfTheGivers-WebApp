@@ -1,6 +1,7 @@
 ﻿using ST10241408_GiftOfTheGiversWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ST10241408_GiftOfTheGiversWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
@@ -26,7 +27,7 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
                 {
                     GoodsDonations = _context.GoodsDonation.ToList(),
                     MoneyDonations = _context.MoneyDonation.ToList(),
-                    Disasters = _context.Disatser.ToList()
+                    Disasters = _context.Disaster.ToList()
                 };
 
                 return View(viewModel);

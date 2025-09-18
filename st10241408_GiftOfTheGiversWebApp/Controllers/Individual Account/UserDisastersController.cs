@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ST10241408_GiftOfTheGiversWebApp;
+using ST10241408_GiftOfTheGiversWebApp.Data;
 using ST10241408_GiftOfTheGiversWebApp.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -26,12 +27,12 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
         [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Disatser == null)
+            if (id == null || _context.Disaster == null)
             {
                 return NotFound();
             }
 
-            var disaster = await _context.Disatser
+            var disaster = await _context.Disaster
                 .FirstOrDefaultAsync(m => m.DISTATER_ID == id);
             if (disaster == null)
             {
@@ -54,7 +55,7 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
             string currentUsername = User.Identity.Name;
 
             // Query the data for the current username
-            var userDisasters = await _context.Disatser
+            var userDisasters = await _context.Disaster
                 .Where(d => d.USERNAME == currentUsername)
                 .ToListAsync();
 
@@ -128,12 +129,12 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
         [Authorize(Roles = "Admin")] //only admin
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Disatser == null)
+            if (id == null || _context.Disaster == null)
             {
                 return NotFound();
             }
 
-            var disaster = await _context.Disatser.FindAsync(id);
+            var disaster = await _context.Disaster.FindAsync(id);
 
             if (disaster == null || disaster.USERNAME != @User.Identity.Name)
             {
@@ -157,7 +158,7 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
                 return NotFound();
             }
 
-            var existingDisaster = await _context.Disatser.FindAsync(id);
+            var existingDisaster = await _context.Disaster.FindAsync(id);
 
             if (existingDisaster == null || existingDisaster.USERNAME != @User.Identity.Name)
             {
@@ -192,12 +193,12 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Disatser == null)
+            if (id == null || _context.Disaster == null)
             {
                 return NotFound();
             }
 
-            var disaster = await _context.Disatser
+            var disaster = await _context.Disaster
                 .FirstOrDefaultAsync(m => m.DISTATER_ID == id);
 
             if (disaster == null || disaster.USERNAME != User.Identity.Name)
@@ -215,12 +216,12 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Disatser == null)
+            if (_context.Disaster   == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Disatser'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Disaster'  is null.");
             }
 
-            var disaster = await _context.Disatser.FindAsync(id);
+            var disaster = await _context.Disaster.FindAsync(id);
 
             if (disaster == null || disaster.USERNAME != User.Identity.Name)
             {
@@ -228,13 +229,13 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
                 return NotFound();
             }
 
-            _context.Disatser.Remove(disaster);
+            _context.Disaster.Remove(disaster);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
         private bool DisasterExists(int id)
         {
-            return _context.Disatser.Any(e => e.DISTATER_ID == id && e.USERNAME == @User.Identity.Name);
+            return _context.Disaster.Any(e => e.DISTATER_ID == id && e.USERNAME == @User.Identity.Name);
         }
     }
 }

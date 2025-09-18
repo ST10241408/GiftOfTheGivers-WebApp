@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ST10241408_GiftOfTheGiversWebApp.Models;
 
-namespace ST10241408_GiftOfTheGiversWebApp
+namespace ST10241408_GiftOfTheGiversWebApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
-   {
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
         public DbSet<Models.MoneyDonation> MoneyDonation { get; set; }
         public DbSet<Models.GoodsDonation> GoodsDonation { get; set; }
-        public DbSet<Models.Disaster> Disatser { get; set; }
+        public DbSet<Models.Disaster> Disaster { get; set; }
         public DbSet<Models.Money> Money { get; set; }
         public DbSet<MoneyAllocation> MoneyAllocation { get; set; }
         public DbSet<GoodsAllocation> GoodsAllocation { get; set; }
