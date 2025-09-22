@@ -63,7 +63,7 @@
                     <div class="card shadow-sm h-100 border-danger">
                         <div class="card-body">
                             <h5 class="card-title"><i class="icon ion-ios-warning"></i> @disaster.AID_TYPE</h5>
-                            <p class="card-text"><strong>ID:</strong> @disaster.DISASTER_ID</p>
+                            <p class="card-text"><strong>ID:</strong> @disaster.DISTATER_ID</p>
                             <p class="card-text"><strong>User:</strong> @disaster.USERNAME</p>
                             <p class="card-text"><strong>Start:</strong> @(disaster.STARTDATE?.ToShortDateString() ?? "-")</p>
                             <p class="card-text"><strong>End:</strong> @(disaster.ENDDATE?.ToShortDateString() ?? "-")</p>
@@ -80,31 +80,67 @@
 else
 {
     <!-- Public view -->
-    <div class="position-relative">
-        <img src="~/images/Philosophy.png" class="w-100" style="object-fit: cover; max-height: 500px;" alt="Philosophy" />
-        <img src="~/images/AboutUs.png" class="w-100 mt-3" style="object-fit: cover; max-height: 500px;" alt="About Us" />
-    </div>
+    <div class="container my-5">
+        <!-- Blog-style Images -->
+        <div class="row g-4 mb-5">
+            <div class="col-12 col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="~/images/Philosophy.png" class="card-img-top rounded" alt="Philosophy" />
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Our Philosophy</h5>
+                        <p class="card-text text-muted">
+                            Guided by compassion and resilience, our philosophy is to stand by communities in their most vulnerable moments.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="container text-center my-5">
-        <div class="row g-4">
+            <div class="col-12 col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="~/images/AboutUs.png" class="card-img-top rounded" alt="About Us" />
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">About Us</h5>
+                        <p class="card-text text-muted">
+                            We are committed to disaster relief and humanitarian aid, empowering people to rebuild their lives with dignity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row g-4 text-center mb-5">
             <div class="col-12 col-md-4">
-                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.6rem; border-radius:12px;"
                    asp-controller="UserDisasters" asp-action="Create">
                     Log a Disaster
                 </a>
             </div>
             <div class="col-12 col-md-4">
-                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.6rem; border-radius:12px;"
                    asp-controller="UserGoodsDonations" asp-action="Create">
                     Donate Goods
                 </a>
             </div>
             <div class="col-12 col-md-4">
-                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.8rem; border-radius:12px;"
+                <a class="btn btn-lg btn-warning w-100 shadow-sm" style="font-size:1.6rem; border-radius:12px;"
                    asp-controller="UserMoneyDonations" asp-action="Create">
                     Donate Money
                 </a>
             </div>
         </div>
+
+        <!-- Extra Section: Mission / Impact -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="fw-bold mb-3">Our Mission</h3>
+                <p class="lead text-muted mx-auto" style="max-width: 800px;">
+                    Every donation, big or small, makes a real difference. From disaster relief to rebuilding lives,
+                    we are driven by the belief that humanity is strongest when united. Together, we create hope where it is needed most.
+                </p>
+            </div>
+        </div>
     </div>
+
+
 }
