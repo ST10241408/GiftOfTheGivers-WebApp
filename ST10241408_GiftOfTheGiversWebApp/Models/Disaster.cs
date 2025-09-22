@@ -10,7 +10,7 @@ namespace ST10241408_GiftOfTheGiversWebApp.Models
         // Primary key and required field to uniquely identify a disaster
         [Key]
         [Required]
-        public int DISASTER_ID { get; set; }
+        public int DISTATER_ID { get; set; }
 
         // Username associated with the disaster (not required)
         public string USERNAME { get; set; }

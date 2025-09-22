@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ST10241408_GiftOfTheGiversWebApp;
+using ST10241408_GiftOfTheGiversWebApp.Data;
 using ST10241408_GiftOfTheGiversWebApp.Models;
 using System;
+
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,7 +21,7 @@ public class GoodsAllocationsController : Controller
     public async Task<IActionResult> Index()
     {
         // Get a list of active disasters for the AidType dropdown
-        var activeDisasters = _context.Disatser
+        var activeDisasters = _context.Disaster
             .Where(d => d.IsActive == 1)
             .Select(d => new SelectListItem
             {
@@ -51,7 +53,7 @@ public class GoodsAllocationsController : Controller
         ViewBag.Categories = availableCategories;
 
         // Get a list of active disasters for the AidType dropdown
-        var activeDisasters = _context.Disatser
+        var activeDisasters = _context.Disaster
             .Where(d => d.IsActive == 1)
             .Select(d => new SelectListItem
             {

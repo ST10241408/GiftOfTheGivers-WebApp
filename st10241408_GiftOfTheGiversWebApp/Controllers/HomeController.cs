@@ -45,8 +45,15 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
 
         public IActionResult About()
         {
+
             return View();
         }
 
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+       
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ST10241408_GiftOfTheGiversWebApp.Data;
 using ST10241408_GiftOfTheGiversWebApp.Models;
 
 namespace ST10241408_GiftOfTheGiversWebApp.Controllers
@@ -23,11 +24,11 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var activeDisasters = _context.Disatser
+            var activeDisasters = _context.Disaster
                 .Where(d => d.IsActive == 1)
                 .Select(d => new SelectListItem
                 {
-                    Value = d.DISASTER_ID.ToString(),
+                    Value = d.DISTATER_ID.ToString(),
                     Text = d.AID_TYPE
                 })
                 .ToList();
@@ -48,11 +49,11 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
 
         public IActionResult Create()
         {
-            var activeDisasters = _context.Disatser
+            var activeDisasters = _context.Disaster
                 .Where(d => d.IsActive == 1)
                 .Select(d => new SelectListItem
                 {
-                    Value = d.DISASTER_ID.ToString(),
+                    Value = d.DISTATER_ID.ToString(),
                     Text = d.AID_TYPE
                 })
                 .ToList();
@@ -88,7 +89,7 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
                         moneyAllocation.DisasterId = DisasterId;
 
                         // Retrieve the corresponding Disaster entity
-                        var selectedDisaster = _context.Disatser.FirstOrDefault(d => d.DISASTER_ID == DisasterId);
+                        var selectedDisaster = _context.Disaster.FirstOrDefault(d => d.DISTATER_ID == DisasterId);
 
                         if (selectedDisaster != null)
                         {
@@ -148,11 +149,11 @@ namespace ST10241408_GiftOfTheGiversWebApp.Controllers
             }
 
             // Repopulate the dropdown list and remaining money for the view
-            var disasterTypes = _context.Disatser
+            var disasterTypes = _context.Disaster
                 .Where(d => d.IsActive == 1)
                 .Select(d => new SelectListItem
                 {
-                    Value = d.DISASTER_ID.ToString(),
+                    Value = d.DISTATER_ID.ToString(),
                     Text = d.AID_TYPE
                 })
                 .ToList();

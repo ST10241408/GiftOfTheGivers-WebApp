@@ -3,23 +3,30 @@
     ViewData["Title"] = "Error";
 }
 
+<!-- Display a clear and concise error message -->
 <h1 class="text-danger">Error.</h1>
 <h2 class="text-danger">An error occurred while processing your request.</h2>
 
+<!-- If the request ID is available, display it for debugging purposes -->
 @if (Model.ShowRequestId)
 {
     <p>
         <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        <!-- This request ID can be used to track the error in logs and debugging tools -->
     </p>
 }
 
+<!-- Provide guidance for developers to troubleshoot the issue -->
 <h3>Development Mode</h3>
 <p>
     Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+    <!-- This is useful for local debugging, but should not be enabled in production -->
 </p>
 <p>
-    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
+    <strong>Important:</strong> The Development environment shouldn't be enabled for deployed applications.
+    <!-- This is a security risk, as it can expose sensitive information to end users -->
     It can result in displaying sensitive information from exceptions to end users.
     For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
     and restarting the app.
+    <!-- This will allow developers to see more detailed error information -->
 </p>
