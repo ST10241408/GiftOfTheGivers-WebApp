@@ -119,21 +119,8 @@ Git Repository Structure
 ├─ Program.cs
 └─ README.md
 
-Submission Instructions
-
-Source Code: Include all files and dependencies.
-
-Git Repo: Provide public access link for review.
-
-Pipelines: Include pipeline configuration and screenshots of successful builds.
-
-Screenshots: Include at least 5 screenshots demonstrating core functionality.
 
 Future Improvements
-
-Implement real-time notifications for disaster updates.
-
-Add payment gateway integration for monetary donations.
 
 Include analytics dashboard for admin reporting.
 
@@ -143,3 +130,4 @@ Author
 
 Phathisa Ndaliso – Final Year Software Development Student
 [Rosebank College, Johannesburg]
+
