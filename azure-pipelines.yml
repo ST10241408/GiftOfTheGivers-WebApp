@@ -6,38 +6,40 @@
 trigger:
   branches:
     include:
-      - master  # Trigger builds from the master branch
+      - develop
 
 pool:
-  name: 'Default'  
-  demands:
-    - Agent.Name -equals LENOVO  
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
 
 steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '7.x'
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
 - task: NuGetToolInstaller@1
-  displayName: 'Use NuGet 5.x'
 
 - task: NuGetCommand@2
-  displayName: 'Restore NuGet Packages'
   inputs:
-    command: 'restore'
     restoreSolution: '**/*.sln'
 
 - task: VSBuild@1
-  displayName: 'Build Solution'
   inputs:
     solution: '**/*.sln'
-    msbuildArchitecture: 'x64'
-    configuration: 'Release'
+    msbuildArgs: '/p:Configuration=$(buildConfiguration)'
+    platform: 'Any CPU'
+    configuration: '$(buildConfiguration)'
 
 - task: VSTest@2
-  displayName: 'Run Tests'
   inputs:
-    platform: 'x64'
-    configuration: 'Release'
+    platform: 'Any CPU'
+    configuration: '$(buildConfiguration)'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Build Artifacts'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
